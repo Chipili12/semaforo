@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+  const [redClick, setredClick] = useState('');
+  const [yellowClick, setyellowClick] = useState('');
+  const [greenClick, setgreenClick] = useState('');
+  
+  
+	const setredsemaforo = () => {
+	  setredClick('apretado');
+	  setyellowClick('');
+	  setgreenClick('');
+	};
+  
+	const setyellowsemaforo = () => {
+	  setyellowClick('apretado');
+	  setredClick('');
+	  setgreenClick('');
+	};
+  
+	const setgreensemaforo = () => {
+	  setgreenClick('apretado');
+	  setredClick('');
+	  setyellowClick('');
+	};
+  
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+	  <div className="semaforo container text-center d-flex flex-column">
+		<button onClick={setredsemaforo} className={`Red ${redClick} mt-3 mb-2`}></button>
+		<button onClick={setyellowsemaforo} className={`Yellow ${yellowClick} mb-2`}></button>
+		<button onClick={setgreensemaforo} className={`Green ${greenClick} mb-3`}></button>
+	  </div>
 	);
-};
-
+	}
+  
+  
 export default Home;
